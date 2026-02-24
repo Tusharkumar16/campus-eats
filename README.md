@@ -1,63 +1,33 @@
-## Campus Eats (PWA Prototype)
+# Campus Eats (Prototype)
 
-Mobile-first campus food ordering prototype with:
-- student restaurant list + QR entry
-- live order tracking (`/order/CHK1906`)
-- vendor dashboard (`/vendor`)
-- installable PWA support (manifest + service worker + install banner)
+Mobile-first campus food pickup prototype designed to reduce long lines and order-screen checking.
 
-## Getting Started
+## Problem
+Students constantly check TV screens for order numbers and crowd around pickup areas.
 
-Install dependencies and start dev:
+## Solution
+QR-based order tracking + live status updates:
+- Students track their order on their phone
+- Vendors update status (Received -> Preparing -> Ready)
+- No screen-checking or congestion
 
-```bash
-npm install
-npm run dev
-```
+## Demo Routes
+- `/` — Restaurant list (UTK, Panda Express, Subway, Rubios)
+- `/order/CHK1906` — Demo order tracking
+- `/vendor` — Vendor dashboard
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How It Works
+1. Student scans QR on receipt
+2. Order page opens instantly
+3. Vendor marks "Ready"
+4. Student sees ready status (notification-ready system)
 
-## PWA Setup
+## Tech Stack
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Mobile-first design
 
-This project includes:
-- `app/manifest.ts` web app manifest (`Campus Eats` / `Eats`, standalone mode)
-- `public/sw.js` service worker (caches app shell + static assets)
-- generated placeholder icons:
-  - `/icon-192.png`
-  - `/icon-512.png`
-  - `/apple-touch-icon.png`
-- mobile install banner (supported browsers only, e.g. Chrome on Android)
-
-Note: service worker registration is enabled in production mode only to avoid dev-cache issues.
-
-## How To Test Install
-
-### Android (Chrome)
-
-1. Run a production build:
-```bash
-npm run build
-npm run start
-```
-2. Open the site in Chrome on Android (same network machine or via hosted URL).
-3. You should see the in-app "Add to Home Screen" banner (supported browsers) or Chrome's install prompt.
-4. Install and verify it opens in standalone mode.
-
-### iOS (Safari)
-
-1. Run:
-```bash
-npm run build
-npm run start
-```
-2. Open the site in Safari on iPhone.
-3. Tap Share → "Add to Home Screen".
-4. Launch from the home screen and verify standalone look/behavior.
-
-iOS Safari does not support the `beforeinstallprompt` event, so the custom install banner is intentionally not shown there.
-
-## Routes
-
-- `/`
-- `/order/CHK1906`
-- `/vendor`
+## Status
+Prototype for SDSU pilot discussion.
+Payments, NFC pickup, and rewards are planned future enhancements.
